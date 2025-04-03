@@ -1,0 +1,24 @@
+.pagination {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: center;
+    gap: 2rem;
+    background: var(--bg-color);
+    border-radius: 1rem;
+    padding: 1rem;
+    z-index: 100;
+}
+.pagination_button-text {
+    margin: 0;
+    color: white;
+}
+
+.pagination_button {
+    height: auto;
+    background: var(--user-container);
+    transition: transform 0.2s ease-in-out;
+}
+.pagination_button:hover {
+    transform: scale(105%);
+    border: solid 1px var(--user-container);
+}

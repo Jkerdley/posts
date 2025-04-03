@@ -1,10 +1,12 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { request } from "../../api";
 import { Loader } from "../Loader/Loader";
 import { PostList } from "../PostList/PostList";
-import "./layout.css";
 import { PostProvider } from "../../context/PostContext.jsx";
+import { POSTS_PER_PAGE } from "../../constants";
+import { Pagination } from "../Pagination/Pagination.jsx";
+import { request } from "../../api";
+import { useState, useEffect } from "react";
+import "./layout.css";
 
 export const Layout = () => {
     const [posts, setPosts] = useState([]);
@@ -12,6 +14,7 @@ export const Layout = () => {
     const [comments, setComments] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,6 +43,10 @@ export const Layout = () => {
         fetchData();
     }, []);
 
+    const indexOfLastPost = currentPage * POSTS_PER_PAGE;
+    const indexOfFirstPost = indexOfLastPost - POSTS_PER_PAGE;
+    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
     if (isLoading) {
         return <Loader />;
     }
@@ -49,9 +56,17 @@ export const Layout = () => {
 
     return (
         <PostProvider>
-            <div className="main-layout">
-                <PostList users={users} comments={comments} posts={posts} />
-            </div>
+            <>
+                <div className="main-layout">
+                    <PostList users={users} comments={comments} posts={currentPosts} />
+                </div>
+                <Pagination
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    indexOfLastPost={indexOfLastPost}
+                    posts={posts}
+                />
+            </>
         </PostProvider>
     );
 };

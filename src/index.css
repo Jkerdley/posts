@@ -7,6 +7,8 @@
     --card-bg: #ffffff;
     --primary: #6d4c41;
     --secondary: #795548;
+    --user-container: rgb(163, 151, 142);
+    --pagination: #9b827a;
 }
 
 a {

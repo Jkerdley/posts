@@ -1,7 +1,5 @@
 .main-layout {
-    position: relative;
-    padding: 2rem;
-    z-index: 10;
+    padding: 1rem;
 }
 .error-message {
     color: red;
