@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { request } from "../../api";
 import { Loader } from "../Loader/Loader";
 import { PostList } from "../PostList/PostList";
@@ -28,7 +28,10 @@ export const Layout = () => {
                 console.log("Данные загружены", { fedchedPosts, fedchedUsers, fedchedComments });
             } catch (error) {
                 console.error("Ошибка загрузки данных", error);
-                setError(error.message || "Произошла ошибка сети или сервера");
+                const fetchError =
+                    error.message === "Failed to fetch" &&
+                    "Ошибка загрузки с сервера - попробуйте другой браузер";
+                setError(fetchError || error.message || "Произошла ошибка сети или сервера");
             } finally {
                 setIsLoading(false);
             }
@@ -36,12 +39,6 @@ export const Layout = () => {
 
         fetchData();
     }, []);
-
-    // const selectedUser = users.find((user) => user.id === selectedPost.userId);
-    // const selectedComments = comments.filter((comment) => comment.postId === selectedPost.id);
-
-    // const handleSelectPost = useCallback(() => setSelectedPost, []);
-    // const handleCloseModal = useCallback(() => setSelectedPost(""), []);
 
     if (isLoading) {
         return <Loader />;
@@ -53,18 +50,6 @@ export const Layout = () => {
     return (
         <PostProvider>
             <div className="main-layout">
-                {/* {selectedPost && (
-                <Modal onClose={handleCloseModal}>
-                    <User user={selectedUser} />
-                    <PostContent post={selectedPost} />
-                    <h3>Комментарии:</h3>
-                    {selectedComments.length === 0 ? (
-                        <p>Нет комментариев.</p>
-                    ) : (
-                        selectedComments.map((comment) => <Comment comment={comment} key={comment.id} />)
-                    )}
-                </Modal>
-            )} */}
                 <PostList users={users} comments={comments} posts={posts} />
             </div>
         </PostProvider>

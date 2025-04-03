@@ -17,7 +17,7 @@ export const Post = memo(({ post, getUser }) => {
     return (
         <article className={`posts-list_post-card ${isOpened ? "open" : ""}`} onClick={togglePostOpen}>
             <User user={getUser(post.userId)} />
-            <PostContent post={post} />
+            <PostContent isOpened={isOpened} post={post} />
             {isOpened && (
                 <div className="comments">
                     <h3>Комментарии:</h3>
