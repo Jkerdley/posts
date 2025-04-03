@@ -1,12 +1,11 @@
 import React from "react";
+import { CloseModalButton } from "../Buttons/CloseModalButton";
 
-export const Modal = ({ postAuthor, postComments, children, onClose }) => {
+export const Modal = ({ children, onClose }) => {
     return (
         <div className="modal">
-            <div className="modal-content" onClick={(event) => event.stopPropagation()}>
-                <button className="modal_modal-content_close-button" onClick={onClose}>
-                    ×
-                </button>
+            <div className="modal_content" onClick={(event) => event.stopPropagation()}>
+                <CloseModalButton onClick={onClose} />
                 {children}
             </div>
         </div>

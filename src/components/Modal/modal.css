@@ -1,5 +1,5 @@
 .modal {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -8,12 +8,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
+    z-index: 1000; /* Убедитесь, что z-index достаточно высок */
 }
 
-.modal-content {
+.modal_content {
     background: white;
     padding: 2rem;
     border-radius: 8px;
@@ -22,14 +20,17 @@
     max-height: 100vh;
     overflow-y: auto;
     position: relative;
+    border: 1px solid #ccc; /* Добавляем границу */
 }
 
-.modal_modal-content_close-button {
+.modal_content_close-button {
     position: absolute;
     top: 1rem;
     right: 1rem;
     background: none;
+    color: rgb(255, 255, 255);
     border: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
+    line-height: 1;
 }

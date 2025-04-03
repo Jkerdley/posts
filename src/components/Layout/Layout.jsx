@@ -1,22 +1,17 @@
 import React from "react";
-import { User } from "../User/User";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { request } from "../../api";
 import { Loader } from "../Loader/Loader";
 import { PostList } from "../PostList/PostList";
 import "./layout.css";
-import { Modal } from "../Modal/Modal";
-import { useCallback } from "react";
+import { PostProvider } from "../../context/PostContext.jsx";
 
 export const Layout = () => {
     const [posts, setPosts] = useState([]);
     const [users, setUsers] = useState([]);
     const [comments, setComments] = useState([]);
-    const [selectedPost, setSelectedPost] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
-    console.log("selectedPost", selectedPost);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,25 +37,36 @@ export const Layout = () => {
         fetchData();
     }, []);
 
-    const selectedUser = users.find((user) => user.id === selectedPost.userId);
-    const selectedComments = comments.filter((comment) => comment.postId === selectedPost.id);
+    // const selectedUser = users.find((user) => user.id === selectedPost.userId);
+    // const selectedComments = comments.filter((comment) => comment.postId === selectedPost.id);
 
-    const handleSelectPost = useCallback(() => setSelectedPost, []);
-    const handleCloseModal = useCallback(() => setSelectedPost(""), []);
+    // const handleSelectPost = useCallback(() => setSelectedPost, []);
+    // const handleCloseModal = useCallback(() => setSelectedPost(""), []);
 
     if (isLoading) {
         return <Loader />;
     }
     if (error) {
-        return <h2>{error}</h2>;
+        return <h2 className="error-message">{error}</h2>;
     }
 
     return (
-        <div className="main-layout">
-            {selectedPost && (
-                <Modal postAuthor={selectedUser} postComments={selectedComments} onClose={handleCloseModal} />
-            )}
-            <PostList users={users} posts={posts} onSelectPost={handleSelectPost} />
-        </div>
+        <PostProvider>
+            <div className="main-layout">
+                {/* {selectedPost && (
+                <Modal onClose={handleCloseModal}>
+                    <User user={selectedUser} />
+                    <PostContent post={selectedPost} />
+                    <h3>Комментарии:</h3>
+                    {selectedComments.length === 0 ? (
+                        <p>Нет комментариев.</p>
+                    ) : (
+                        selectedComments.map((comment) => <Comment comment={comment} key={comment.id} />)
+                    )}
+                </Modal>
+            )} */}
+                <PostList users={users} comments={comments} posts={posts} />
+            </div>
+        </PostProvider>
     );
 };
