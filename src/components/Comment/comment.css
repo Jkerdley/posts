@@ -1,0 +1,16 @@
+.comment {
+    background: #fff8f0;
+    padding: 1rem;
+    max-width: 40vw;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+}
+
+.comment_name {
+    padding-left: 0.5rem;
+    color: var(--primary);
+}
+.comment_body {
+    padding-left: 0.5rem;
+    color: var(--primary);
+}

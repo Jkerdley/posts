@@ -1,3 +1,18 @@
-.name {
-    color: rebeccapurple;
+.name-container {
+    background: rgb(163, 151, 142);
+    border-radius: 5rem;
+    padding: 1rem;
+}
+
+.name-container_name-element {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 1rem;
+    color: var(--card-bg);
+}
+.name-container_name-element_title {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
