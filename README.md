@@ -1,12 +1,48 @@
-# React + Vite
+# Проект: Отображение контента из API (посты, комментарии, авторы)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Этот проект создан для отображения контента, полученного из API, включая посты, комментарии и пользователей. Проект разработан с использованием React и Vite и не включает функции регистрации и аутентификации.
 
-Currently, two official plugins are available:
+## Описание
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Приложение загружает данные из внешнего API и отображает их в виде списка постов. Каждый пост можно раскрыть, чтобы увидеть полный текст и комментарии. Пользователи, связанные с постами, также отображаются.
 
-## Expanding the ESLint configuration
+## Технологии
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-   **React**: Используется для построения пользовательского интерфейса.
+-   **Vite**: Используется для сборки и разработки проекта.
+
+## Установка
+
+1. Клонируйте репозиторий:
+
+    ```bash
+    git clone https://github.com/ваш-логин/ваш-репозиторий.git
+    ```
+
+2. Перейдите в директорию проекта:
+
+    ```bash
+    cd ваш-репозиторий
+    ```
+
+3. Установите зависимости:
+
+    ```bash
+    npm install
+    ```
+
+4. Запустите проект:
+    ```bash
+    npm run dev
+    ```
+
+## Структура проекта
+
+-   `src/components`: Компоненты React для отображения постов, комментариев и пользователей.
+-   `src/context`: Контекст для управления состоянием выбранного поста.
+-   `src/api`: Функции для выполнения запросов к API.
+
+## Использование
+
+После запуска проекта откройте [http://localhost:5173](http://localhost:5173) в вашем браузере, чтобы увидеть приложение в действии. Вы можете кликнуть на пост, чтобы раскрыть его и увидеть комментарии.
+Проект также доступен на github pages:
