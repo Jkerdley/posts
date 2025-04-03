@@ -1,0 +1,45 @@
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100vh;
+    width: auto;
+}
+
+.posts-list_post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    background: #dad3c6;
+    max-width: 40vw;
+    height: auto;
+    width: auto;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+.posts-list_post-card:hover {
+    transform: scale(105%);
+}
+.posts-list_post-card_post-text {
+    display: block;
+    padding: 1rem;
+    max-width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background: var(--bg-color);
+    width: auto;
+    max-height: 10vh;
+    border-radius: 3rem;
+}
+.posts-list_post-card_post-title {
+    max-width: auto;
+    padding-left: 1rem;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: auto;
+}

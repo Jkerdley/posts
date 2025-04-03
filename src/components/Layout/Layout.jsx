@@ -5,19 +5,22 @@ import { useEffect } from "react";
 import { request } from "../../api";
 import { Loader } from "../Loader/Loader";
 import { PostList } from "../PostList/PostList";
+import "./layout.css";
+import { Modal } from "../Modal/Modal";
+import { useCallback } from "react";
 
 export const Layout = () => {
     const [posts, setPosts] = useState([]);
     const [users, setUsers] = useState([]);
     const [comments, setComments] = useState([]);
-    const [selectedPost, setSelectedPost] = useState(null);
+    const [selectedPost, setSelectedPost] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    console.log("selectedPost", selectedPost);
 
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
-
             try {
                 const [fedchedPosts, fedchedUsers, fedchedComments] = await Promise.all([
                     request("https://jsonplaceholder.typicode.com/posts"),
@@ -35,17 +38,29 @@ export const Layout = () => {
                 setIsLoading(false);
             }
         };
+
         fetchData();
     }, []);
+
+    const selectedUser = users.find((user) => user.id === selectedPost.userId);
+    const selectedComments = comments.filter((comment) => comment.postId === selectedPost.id);
+
+    const handleSelectPost = useCallback(() => setSelectedPost, []);
+    const handleCloseModal = useCallback(() => setSelectedPost(""), []);
 
     if (isLoading) {
         return <Loader />;
     }
+    if (error) {
+        return <h2>{error}</h2>;
+    }
 
     return (
-        <div className="">
-            <User />
-            <PostList users={users} posts={posts} comments={comments} />
+        <div className="main-layout">
+            {selectedPost && (
+                <Modal postAuthor={selectedUser} postComments={selectedComments} onClose={handleCloseModal} />
+            )}
+            <PostList users={users} posts={posts} onSelectPost={handleSelectPost} />
         </div>
     );
 };
