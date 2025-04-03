@@ -1,8 +1,5 @@
 :root {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-
     --bg-color: #f5eee8;
     --card-bg: #fffdf7;
     --primary: #6d4c41;
@@ -27,7 +24,7 @@ body {
     color: #333;
     place-items: center;
     justify-content: center;
-    min-width: 320px;
+    min-width: 375px;
     min-height: 100vh;
 }
 
