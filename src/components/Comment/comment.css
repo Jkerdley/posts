@@ -5,6 +5,11 @@
     border-radius: 2rem;
     margin-bottom: 1rem;
 }
+@media (max-width: 768px) {
+    .comment {
+        max-width: 85vw;
+    }
+}
 
 .comment_name {
     padding-left: 0.5rem;

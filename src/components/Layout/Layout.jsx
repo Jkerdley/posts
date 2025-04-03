@@ -28,7 +28,6 @@ export const Layout = () => {
                 setPosts(fedchedPosts);
                 setUsers(fedchedUsers);
                 setComments(fedchedComments);
-                console.log("Данные загружены", { fedchedPosts, fedchedUsers, fedchedComments });
             } catch (error) {
                 console.error("Ошибка загрузки данных", error);
                 const fetchError =
