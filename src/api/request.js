@@ -1,6 +1,10 @@
 export async function request(url) {
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            headers: {
+                Accept: "application/json",
+            },
+        });
 
         if (!response.ok) {
             throw new Error(response.error || `Ошибка! Статус: ${response.status}`);

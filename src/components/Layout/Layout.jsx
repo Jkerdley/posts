@@ -56,17 +56,15 @@ export const Layout = () => {
 
     return (
         <PostProvider>
-            <>
-                <div className="main-layout">
-                    <PostList users={users} comments={comments} posts={currentPosts} />
-                </div>
+            <div className="main-layout">
+                <PostList users={users} comments={comments} posts={currentPosts} />
                 <Pagination
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                     indexOfLastPost={indexOfLastPost}
                     posts={posts}
                 />
-            </>
+            </div>
         </PostProvider>
     );
 };
