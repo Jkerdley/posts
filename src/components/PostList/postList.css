@@ -16,10 +16,10 @@
     width: auto;
     border-radius: 3rem;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out, height 0.3s ease-in;
+    transition: transform 0.25s ease-in-out;
 }
 .posts-list_post-card:hover {
-    transform: scale(103%);
+    transform: scale(105%);
 }
 .posts-list_post-card.open:hover {
     transform: scale(100%);
@@ -32,11 +32,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-
     background: var(--bg-color);
     width: auto;
     max-height: 10vh;
     border-radius: 3rem;
+}
+.posts-list_post-card_post-text.open {
+    white-space: unset;
+    max-height: auto;
 }
 
 .posts-list_post-card_post-title {
