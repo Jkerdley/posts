@@ -12,7 +12,6 @@
     color: var(--card-bg);
 }
 .name-container_name-element_title {
-    overflow-x: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
