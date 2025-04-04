@@ -2,17 +2,18 @@ import React from "react";
 import { User } from "../User/User";
 import { memo } from "react";
 import { PostContent } from "./PostContent";
-import "../PostList/postList.css";
+import "../PostsList/postsList.css";
 import { Comment } from "../Comment/Comment";
-import { usePostContext } from "../../context/PostContext";
+import { useState } from "react";
 
-export const Post = memo(({ post, getUser }) => {
-    const { selectedPost, setSelectedPost } = usePostContext();
+export const Post = memo(({ post, comments, getUser }) => {
+    const [selectedPost, setSelectedPost] = useState("");
     const isOpened = selectedPost && selectedPost.id === post.id;
 
     const togglePostOpen = () => {
         setSelectedPost(isOpened ? null : post);
     };
+    const postComments = comments.filter((comment) => comment.postId === post.id);
 
     return (
         <article className={`posts-list_post-card ${isOpened ? "open" : ""}`} onClick={togglePostOpen}>
@@ -20,8 +21,8 @@ export const Post = memo(({ post, getUser }) => {
             <PostContent isOpened={isOpened} post={post} />
             {isOpened && (
                 <div className="comments">
-                    <h3>Комментарии:</h3>
-                    {post.comments.map((comment) => (
+                    <h4>{postComments.length > 0 ? "Комментарии:" : "Комментариев нет:"}</h4>
+                    {postComments.map((comment) => (
                         <Comment key={comment.id} comment={comment} />
                     ))}
                 </div>
