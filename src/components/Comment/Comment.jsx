@@ -4,9 +4,9 @@ import "./comment.css";
 export const Comment = ({ comment }) => {
     return (
         <div className="comment">
-            <h4 className="comment_name">
+            <h5 className="comment_title">
                 ({comment.email}): {comment.name}
-            </h4>
+            </h5>
             <p className="comment_body">{comment.body}</p>
         </div>
     );

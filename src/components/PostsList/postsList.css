@@ -20,9 +20,9 @@
     cursor: pointer;
     transition: transform 0.25s ease-in-out;
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .posts-list_post-card {
-        max-width: 85vw;
+        max-width: 80vw;
     }
 }
 .posts-list_post-card:hover {

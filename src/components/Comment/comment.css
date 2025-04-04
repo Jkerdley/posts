@@ -5,16 +5,17 @@
     border-radius: 2rem;
     margin-bottom: 1rem;
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .comment {
-        max-width: 85vw;
+        max-width: 80vw;
     }
 }
 
-.comment_name {
+.comment_title {
     padding-left: 0.5rem;
     color: var(--primary);
 }
+
 .comment_body {
     padding-left: 0.5rem;
     color: var(--primary);
