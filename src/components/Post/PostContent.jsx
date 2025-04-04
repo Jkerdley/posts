@@ -1,5 +1,5 @@
 import React from "react";
-import "../PostList/postList.css";
+import "../PostsList/postsList.css";
 export const PostContent = ({ isOpened, post }) => {
     return (
         <>
